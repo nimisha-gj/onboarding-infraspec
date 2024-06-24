@@ -1,8 +1,8 @@
 resource "aws_instance" "amazon_linux_instance" {
-  ami           = "ami-0e1d06225679bc1c5"
-  instance_type = "t2.micro"
+  ami           = var.aws_ami_id
+  instance_type = var.aws_instance_type
 
   tags = {
-    Name = "ec2-exercise-1"
+    Name = var.aws_instance_name
   }
 }
