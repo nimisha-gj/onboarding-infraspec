@@ -1,9 +1,9 @@
-variable "vpc_cidr" {
+variable "aws_vpc_cidr" {
   description = "CIDR range for the VPC"
   type = string
 }
 
-variable "vpc_name" {
+variable "aws_vpc_name" {
   description = "Name of the VPC"
   type = string
 }

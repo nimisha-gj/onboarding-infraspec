@@ -1,7 +1,7 @@
 resource "aws_vpc" "exercise_2_vpc" {
-  cidr_block = var.vpc_cidr
+  cidr_block = var.aws_vpc_cidr
 
   tags = {
-    Name = var.vpc_name
+    Name = var.aws_vpc_name
   }
 }
