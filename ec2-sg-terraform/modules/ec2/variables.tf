@@ -23,9 +23,9 @@ variable "aws_subnet_id" {
   type = string
 }
 
-variable "aws_sg_id" {
+variable "aws_sg_ids" {
   description = "Security Group Id which allows incomming ssh connections"
-  type = string
+  type = list(string)
 }
 
 variable "aws_key_name" {
