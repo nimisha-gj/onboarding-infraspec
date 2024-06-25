@@ -13,8 +13,8 @@
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | AMI Id | Id of the AMI for the EC2 instance | `string` | n/a | yes 
-| instance_type | | `string` |  | no |
-| instance_name | | `string` |  | no |
+| instance_type | Type of the EC2 instance | `string` |  | no |
+| instance_name | Name of the EC2 instance | `string` |  | no |
 | user | Name of the User creating the instance | `string` |  | no |
 | region | regoin where the instance is to be created | `string` |  | no |
 
