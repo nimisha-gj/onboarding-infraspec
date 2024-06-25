@@ -1,0 +1,37 @@
+name: Destroy-Infrastructure
+
+on:
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  Destroy-Infrastructure:
+    runs-on: ubuntu-22.04
+    defaults:
+        run:
+          shell: bash
+          working-directory: ec2-sg-terraform
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials from AWS account
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: "arn:aws:iam::471112575944:role/github-actions"
+          aws-region: "ap-south-1"
+          role-session-name: GitHub-OIDC-TERRAFORM
+
+      - name: Terraform Init
+        id: init
+        env:
+          AWS_BUCKET_NAME: "susdev-bucket"
+          AWS_BUCKET_KEY_NAME: "infra.tfstate"
+        run: terraform init -backend-config="bucket=${AWS_BUCKET_NAME}" -backend-config="key=${AWS_BUCKET_KEY_NAME}" -backend-config="region=${AWS_REGION}"
+
+      - name: Terraform Destroy
+        run: terraform destroy -auto-approve -input=false
